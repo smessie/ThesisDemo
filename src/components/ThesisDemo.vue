@@ -1,16 +1,28 @@
 <template>
-  <h1>Hello!</h1>
+  <MDBCard v-for="(rating, index) in ratings" :key="index" style="margin: 1em; font-size: 20pt;">
+    <MDBCardBody>
+      <span v-if="rating.value === 'http://schema.org/Excellent'">🤩 </span>
+      <span v-if="rating.value === 'http://schema.org/Amazing'">🚀 </span>
+      <span v-if="rating.value === 'http://schema.org/Awesome'">🎉 </span>
+      {{ rating.explanation }}
+    </MDBCardBody>
+  </MDBCard>
 </template>
 
 <script>
 import {QueryEngine} from "@comunica/query-sparql";
+import {MDBCard, MDBCardBody} from "mdb-vue-ui-kit";
 
 export default {
   name: "ThesisDemo",
+  components: {
+    MDBCard,
+    MDBCardBody,
+  },
   data() {
     return {
       engine: new QueryEngine(),
-      ratings : [],
+      ratings: [],
     }
   },
   async created() {
@@ -46,7 +58,7 @@ export default {
           value: binding.get('value').value,
           explanation: binding.get('explanation').value,
         }
-      });
+      }).reverse();
     }
   },
 }
