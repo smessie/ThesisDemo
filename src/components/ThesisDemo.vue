@@ -41,8 +41,8 @@ export default {
         PREFIX schema: <http://schema.org/>
         SELECT ?value ?explanation WHERE {
             ?s a schema:Rating ;
-                schema:ratingValue ?value ;
-                schema:ratingExplanation ?explanation .
+                schema:ratingValue ?value .
+            OPTIONAL { ?s schema:ratingExplanation ?explanation }.
         }
       `, {
             sources: [{
@@ -56,7 +56,7 @@ export default {
       this.ratings = bindings.map((binding) => {
         return {
           value: binding.get('value').value,
-          explanation: binding.get('explanation').value,
+          explanation: binding.get('explanation')?.value,
         }
       }).reverse();
     }
