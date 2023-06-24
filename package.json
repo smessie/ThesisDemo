@@ -10,6 +10,7 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@comunica/query-sparql": "^2.7.1",
     "mdb-vue-ui-kit": "^4.0.0",
     "vue": "^3.3.4"
   },
