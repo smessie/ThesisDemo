@@ -1,9 +1,9 @@
 <template>
   <MDBCard v-for="(rating, index) in ratings" :key="index" style="margin: 1em; font-size: 20pt;">
     <MDBCardBody>
-      <span v-if="rating.value === 'http://schema.org/Excellent'">🤩 </span>
-      <span v-if="rating.value === 'http://schema.org/Amazing'">🚀 </span>
-      <span v-if="rating.value === 'http://schema.org/Awesome'">🎉 </span>
+      <span v-if="rating.value === 'http://schema.org/Great'">🤩 </span>
+      <span v-if="rating.value === 'http://schema.org/Good'">👍 </span>
+      <span v-if="rating.value === 'http://schema.org/NotGood'">👎 </span>
       {{ rating.explanation }}
     </MDBCardBody>
   </MDBCard>
