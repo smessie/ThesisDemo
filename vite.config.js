@@ -30,4 +30,8 @@ export default defineConfig({
         global: "window",
         "process.env": {},
     },
+    esbuild: {
+        // https://github.com/vitejs/vite/issues/11642#issuecomment-1377160020
+        minifyIdentifiers: false,
+    }
 })
